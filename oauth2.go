@@ -120,6 +120,15 @@ func LinkedIn(conf *oauth2.Config) martini.Handler {
 	return NewOAuth2Provider(conf)
 }
 
+//
+func Weibo(conf *oauth2.Config) martini.Handler {
+	conf.Endpoint = oauth2.Endpoint{
+		AuthURL:  "https://api.weibo.com/oauth2/authorize",
+		TokenURL: "https://api.weibo.com/oauth2/access_token",
+	}
+	return NewOAuth2Provider(conf)
+}
+
 // NewOAuth2Provider returns a generic OAuth 2.0 backend endpoint.
 func NewOAuth2Provider(conf *oauth2.Config) martini.Handler {
 
